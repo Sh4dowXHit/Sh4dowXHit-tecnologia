@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sh4dowXHit - Painel</title>
+    <style>
+        body { background: #0d0d0d; color: #f0f0f0; font-family: monospace; padding: 40px; }
+        h1, h2 { color: #ff004c; }
+        .servico { background: #1a1a1a; padding: 20px; border: 1px solid #333; margin-bottom: 20px; border-radius: 8px; }
+        .botao { background: #ff004c; color: white; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; border-radius: 4px; }
+        .botao:hover { background: #e60045; }
+    </style>
+</head>
+<body>
+    <h1>Sh4dowXHit - Tecnologia</h1>
+    <p>Catálogo de Serviços Digitais Profissionais</p><form id="emailForm">
+    <label for="email">Seu Gmail (para contato):</label><br>
+    <input type="email" id="email" name="email" required placeholder="seuemail@gmail.com">
+    <br><br>
+</form>
+
+<div class="servico">
+    <h2>DevFlex Promo - R$20</h2>
+    <p>Promoção de marca com divulgação em comunidades e redes sociais.</p>
+    <button class="botao" onclick="enviarWebhook('DevFlex Promo - R$20')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>SmartChat AI - R$25</h2>
+    <p>Chatbot inteligente com IA para atendimento automático e suporte ao cliente.</p>
+    <button class="botao" onclick="enviarWebhook('SmartChat AI - R$25')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>InstaMonitor - R$20</h2>
+    <p>Monitoramento estratégico de perfis e hashtags com alertas em tempo real.</p>
+    <button class="botao" onclick="enviarWebhook('InstaMonitor - R$20')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>Form2Discord - R$15</h2>
+    <p>Formulário web que envia dados diretamente para o Discord via webhook.</p>
+    <button class="botao" onclick="enviarWebhook('Form2Discord - R$15')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>TrackLink Pro - R$20</h2>
+    <p>Ferramenta de rastreamento de acessos, IPs e cliques em links personalizados.</p>
+    <button class="botao" onclick="enviarWebhook('TrackLink Pro - R$20')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>AutoDropLink - R$10</h2>
+    <p>Automatização de compartilhamento de links com controle de acesso e log.</p>
+    <button class="botao" onclick="enviarWebhook('AutoDropLink - R$10')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>DevFlex Site - R$30</h2>
+    <p>Criação de site responsivo com painel administrativo exclusivo.</p>
+    <button class="botao" onclick="enviarWebhook('DevFlex Site - R$30')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>Landing Express - R$25</h2>
+    <p>Página de captura ou venda com design atrativo e foco em conversão.</p>
+    <button class="botao" onclick="enviarWebhook('Landing Express - R$25')">Contratar</button>
+</div>
+
+<div class="servico">
+    <h2>RankBoost SEO - R$20</h2>
+    <p>Serviço de SEO completo para melhorar sua presença nos motores de busca.</p>
+    <button class="botao" onclick="enviarWebhook('RankBoost SEO - R$20')">Contratar</button>
+</div>
+
+<script>
+    function enviarWebhook(servico) {
+        const email = document.getElementById('email').value || 'email não informado';
+        const mensagem = `Nova solicitação: **${servico}**\nEmail: ${email}`;
+
+        fetch('https://discord.com/api/webhooks/1373051074965012551/gVRBwqZc6Fgw3JO4liWomJksBAsYBVtLBCTo0zYX3PJcUftj0fVFI2w0Ewt8ZTN5J6fV', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: mensagem })
+        })
+        .then(() => {
+            window.location.href = `mailto:Sh4dowXHittecnologia@gmail.com?subject=Serviço: ${encodeURIComponent(servico)}&body=Olá, gostaria de contratar o serviço: ${encodeURIComponent(servico)}. Meu Gmail: ${encodeURIComponent(email)}`;
+        })
+        .catch(error => alert('Erro ao enviar para Discord'));
+    }
+</script>
+
+</body>
+</html>
